@@ -1,0 +1,29 @@
+# .gitpod.yml
+image:
+  file: .gitpod.Dockerfile
+
+tasks:
+  - name: Flutter Web Dev
+    init: |
+      export PATH="$HOME/flutter/bin:$PATH"
+      flutter --version
+      flutter config --enable-web
+      flutter pub get
+    command: |
+      export PATH="$HOME/flutter/bin:$PATH"
+      # Pass any secrets via Gitpod Variables (see step 3)
+      flutter run -d web-server \
+        --web-hostname 0.0.0.0 \
+        --web-port 8080 \
+        ${SUPABASE_URL:+--dart-define=SUPABASE_URL=${SUPABASE_URL}} \
+        ${SUPABASE_ANON_KEY:+--dart-define=SUPABASE_ANON_KEY=${SUPABASE_ANON_KEY}}
+
+ports:
+  - port: 8080
+    onOpen: open-preview
+    visibility: public
+
+vscode:
+  extensions:
+    - Dart-Code.flutter
+    - Dart-Code.dart-code
