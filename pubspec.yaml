@@ -1,0 +1,25 @@
+name: fnb_saas_pos
+description: A multi-tenant SaaS POS system for food & beverage businesses.
+# The following defines the version and build number for your application.
+version: 0.1.0+1
+
+environment:
+  sdk: '>=2.18.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_dotenv: ^5.1.0
+  supabase_flutter: ^1.10.7
+  go_router: ^7.0.1
+  flutter_riverpod: ^2.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.1
+
+flutter:
+  uses-material-design: true
+  assets:
+    - .env
